@@ -12,7 +12,7 @@ const getDogImage = async () => {
 const DogImage = () => {
   const $dogImage = document.createElement(`img`);
   $dogImage.alt = `Random dog image`;
-  $dogImage.src = (state.docImage);
+  $dogImage.src = state.docImage;
   return $dogImage;
 }
 
