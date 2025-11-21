@@ -1,14 +1,18 @@
+const state = {
+  docImage: null
+}
+
 const getDogImage = async () => {
   const API = `https://dog.ceo/api/breeds/image/random`;
   const response = await fetch(API);
   const data = await response.json();
-  return data.message;
+  state.docImage = data.message;
 }
 
 const DogImage = () => {
   const $dogImage = document.createElement(`img`);
   $dogImage.alt = `Random dog image`;
-  $dogImage.src = (getDogImage());
+  $dogImage.src = (state.docImage);
   return $dogImage;
 }
 
@@ -21,4 +25,9 @@ const rendor = () => {
   document.querySelector(`DogImage`).replaceWith(DogImage());
 }
 
-rendor();
+const init = async () => {
+  await getDogImage();
+  rendor();
+}
+
+init();
